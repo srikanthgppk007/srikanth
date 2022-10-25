@@ -3,7 +3,7 @@ node{
    def tomcatBin = 'C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0_bittu\\bin'
    def tomcatStatus = ' '
     stage('SCM checkout'){
-          git branch: 'main', credentialsId: 'git_credentials', url: 'https://github.com/srikanthgppk007/srikanth.git'  
+          git'https://github.com/srikanthgppk007/srikanth.git'  
     }
     stage('Compile-Package-create-War-file'){
      //git maven home path
