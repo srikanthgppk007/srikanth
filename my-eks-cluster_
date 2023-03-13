@@ -1,0 +1,31 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMvakNDQWVhZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJek1ETXhNekV4TXpJMU1Gb1hEVE16TURNeE1ERXhNekkxTUZvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBUFZJCjRtNVVGcjBueHNHVDFHN3kxZ3g2ZG1Obnk2d0twMTVmVk0xb2d3dFcyZHk2QndHQStQZjBGamdFQndJMzA0c1gKUG50NjJGVFVQd05US2owU1d0RURzaFg3ZXZVVkJPWk41RVc4bVVyK2VoSEFJTS92TnJ0aFFEeVZrem5rOGovRAowYStPeXBZcFRGR0NvcloyTkRPalE3TU9QQUJJTUNnRXdNL0FaempoRmdqVEIwQ1RXL2swdzFWUFFjSkdzb2ZVCjRYUFV5anZSQzNJSmV0dkJqTFRFVnFuRmpnaWVNYXo2amFTcjNGY2pOenBJZUozZWxCT3AzSW9MQkxHWFFXK0oKWmZxTjBBNDdUbS8rZG5HWHRYYVRRRUFzVUJuOVVWUUNIRitrMFEyamdnMVlBMTJ4bSt0SGJmbENoUEpWeEMzeAo2UktPNU9kSVRSWVUxQzRlQ1c4Q0F3RUFBYU5aTUZjd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZOOTBBcjA3OWR5Q0hobGs1MUhWVDBSYXhWSXNNQlVHQTFVZEVRUU8KTUF5Q0NtdDFZbVZ5Ym1WMFpYTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBTDR2TS91K3pSTDRFOXpJeWRHSQpINThWTEFBU2g4QVgrNDEwbEw1VXhKUGErNkcrNW5mR2d5dktCQTlyZnlQWnJVanVmSDRWckd2Q2FOZ01qNmpwCnN1UEpRNGZMVHNBRVFGaE5aOTBRMHB1emlzWjBZdEgrb25ZdUQ2ZkQ3SlpjUVhXWTFUY0syb1Zyc3dvTTFMNlQKTS90d01ZRi8wc0h5Q1dKU2lJQmk1ejFmUTl2Y0NYdXBaaTNsckVGR3N0NlAzbGRIdjVwdlpnc3Q1MFJYNDBjZgpkSlZxams2a2F1VXV6U3puMk5aVmhsVnpoN09hclNEVmRmOTBaM1FqRGs3RXlqRks5TmhDdENJRno0NVV5YXR0Ck9vdUpPZlhjbmJ6ekdSMWVsL0ZTaVVKTGxOUUZ3NHU5Q1N0eHhzSlFxNTBLWnBHc2ljTXNYc3E4UHhtU2RGczEKS0prPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    server: https://4CE6D5C7D7201DB97CA1FBA497F672F7.sk1.ca-central-1.eks.amazonaws.com
+  name: my-eks-cluster.ca-central-1.eksctl.io
+contexts:
+- context:
+    cluster: my-eks-cluster.ca-central-1.eksctl.io
+    user: iam-root-account@my-eks-cluster.ca-central-1.eksctl.io
+  name: iam-root-account@my-eks-cluster.ca-central-1.eksctl.io
+current-context: iam-root-account@my-eks-cluster.ca-central-1.eksctl.io
+kind: Config
+preferences: {}
+users:
+- name: iam-root-account@my-eks-cluster.ca-central-1.eksctl.io
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - eks
+      - get-token
+      - --cluster-name
+      - my-eks-cluster
+      - --region
+      - ca-central-1
+      command: aws
+      env:
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      provideClusterInfo: false
